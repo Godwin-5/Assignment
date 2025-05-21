@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap');
+
+.container-1 {
+    background-color: #FBEEEE;
+}
+
+.container-2 {
+    background-color: #FBEEEE;
+}
+
+.container-3 {
+    background-color: #fff;
+}
+
+.slide-content {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-text {
+    font-size: 40px !important;
+    white-space: pre-line;
+    font-weight: 700 !important;
+    font-family: 'Barlow' !important;
+}
+
+.dot-color {
+    color: #E8505E;
+}
