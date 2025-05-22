@@ -272,11 +272,7 @@ const Home = () => {
             </Grid>
 
             {/* container 5 */}
-            <Grid container className='container-5'>
-                <Grid container size={12}>
-                    <Typography>Designed to meet your unique needs.​</Typography>
-                </Grid>
-
+            <Grid container className='container-5' spacing={2}>
                 <IndustrySlides />
             </Grid>
         </Box>

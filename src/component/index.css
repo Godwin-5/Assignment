@@ -18,10 +18,14 @@
     background-color: #ECECEC;
     padding-top: 40px;
     justify-content: center;
+    padding-bottom: 40px;
 }
 
 .container-5 {
     background-color: #fff;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 50px;
 }
 
 .image-subcontainer {
