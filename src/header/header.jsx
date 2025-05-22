@@ -45,7 +45,7 @@ const Header = () => {
 
                 <Grid container gap={2} className='button-container' size={12}>
                     <Button variant="outlined" className="button1">Start Your Research</Button>
-                    <Button variant="contained" className="button2">Join a Paid Focus Group</Button>
+                    <Button variant="contained" className="button2" disableElevation>Join a Paid Focus Group</Button>
                 </Grid>
             </Grid>
         </Box>

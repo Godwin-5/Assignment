@@ -6,16 +6,24 @@
 
 .container-2 {
     background-color: #FBEEEE;
+    padding: 70px;
 }
 
 .container-3 {
     background-color: #fff;
+    padding: 100px;
+}
+
+.image-subcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-top: 30px;
 }
 
 .slide-content {
     display: flex;
     align-items: center;
-    padding: 50px;
     justify-content: center;
     align-items: center;
 }
@@ -29,4 +37,88 @@
 
 .dot-color {
     color: #E8505E;
+}
+
+.badge {
+    background-color: #D5FDAD;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 10px !important;
+}
+
+.badge-title {
+    font-size: 35px !important;
+    font-family: 'Barlow' !important;
+    font-weight: 600 !important;
+    line-height: 45px !important;
+    font-size: 16px;
+    margin-top: 60px !important;
+}
+
+.badge-desc {
+    font-family: 'Barlow' !important;
+    line-height: 15px !important;
+    margin-top: 10% !important;
+    font-size: 14px !important;
+}
+
+.card {
+    border: 1px solid #000000;
+    height: 270px;
+    width: 230px;
+    padding: 10px;
+    position: relative;
+}
+
+.card:hover {
+    background-color: #E8505E;
+}
+
+.card-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    font-family: 'Barlow' !important;
+}
+
+.card-desc {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    font-family: 'Barlow' !important;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+}
+
+.image-wrapper {
+    width: 270px;
+    height: 300px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin-top: 100px;
+    position: relative;
+}
+
+.bounded-image {
+    position: absolute;
+    transform: translate(16%, -28.5%);
+}
+
+.arrow-container {
+    background-color: #E8505E;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px 20px;
+    align-items: center;
+    display: flex;
+    color: white;
+}
+
+.card:hover .arrow-container {
+    background-color: white;
+     color: #000;
 }
