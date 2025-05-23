@@ -7,6 +7,7 @@ import { useState } from "react";
 const Header = () => {
 
     const [toggleDropdown, setToggleDropdown] = useState(false)
+    const [selectedDropdown, setSelectedDropdown] = useState({})
 
     const headerNames = [
         {
@@ -28,6 +29,8 @@ const Header = () => {
     ]
 
     const handleToggleDropdown = (id) => {
+        const selectedDropdown = headerNames?.find((item) => item?.id === id)
+        setSelectedDropdown((prev) => prev?.id === id ? {} : selectedDropdown)
         setToggleDropdown(!toggleDropdown)
     }
 
@@ -35,10 +38,10 @@ const Header = () => {
         <Box>
             <Grid className='header' gap={1}>
                 {headerNames?.map((item) => (
-                    <Box sx={{ display: 'flex' }}>
-                        <Typography className="header-font" key={item?.id}>{item?.name}</Typography>
+                    <Box key={item?.id} sx={{ display: 'flex' }}>
+                        <Typography className="header-font">{item?.name}</Typography>
                         <Box onClick={() => handleToggleDropdown(item?.id)}>
-                            {!toggleDropdown ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
+                            {selectedDropdown?.id === item?.id && toggleDropdown ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
                         </Box>
                     </Box>
                 ))}
