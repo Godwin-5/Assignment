@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid'
 import Header from "./header/header"
 import Slide1 from '../assets/sliders/slide1.svg';
 import Slide2 from '../assets/sliders/slide2.svg';
-import Slide3 from '../assets/sliders/slide3.png';
+import Slide3 from '../assets/sliders/slide3.svg';
 import GirlPic from '../assets/girl.png';
 import GroupIcon from '../assets/svgcomponents/GroupIcon';
 import QualitativeIcon from '../assets/svgcomponents/QualitativeIcon'
@@ -29,9 +29,9 @@ import Blog1 from '../assets/blogpics/Blog pic1.svg'
 import Blog2 from '../assets/blogpics/Blog pic2.svg'
 import Blog3 from '../assets/blogpics/Blog pic3.svg'
 import Blog4 from '../assets/blogpics/Blog pic4.svg'
+import Slide from '../assets/sliders/pngwing.svg'
 
 const Home = () => {
-
 
     const slides = [
         {
@@ -62,17 +62,17 @@ const Home = () => {
             setShowSlider(true);
         }, 1000);
 
-        textTimer = setTimeout(() => {
-            setShowSliderText(true);
-        }, 2000);
+        // textTimer = setTimeout(() => {
+        //     setShowSliderText(true);
+        // }, 2000);
 
         imageHideTimer = setTimeout(() => {
             setShowSlider(false);
         }, 3000);
 
-        textHideTimer = setTimeout(() => {
-            setShowSliderText(false);
-        }, 3700);
+        // textHideTimer = setTimeout(() => {
+        //     setShowSliderText(false);
+        // }, 3700);
 
         nextSlideTimer = setTimeout(() => {
             setActiveSlideIndex((prev) => (prev + 1) % slides.length);
@@ -146,7 +146,18 @@ const Home = () => {
                         className={`slide-image ${showSlider ? 'visible' : ''}`}
                     />
 
-                    <Typography className={`slide-text ${showSliderText ? 'visible' : ''}`} sx={{ visibility: !showSliderText && 'hidden' }}>
+                    {activeSlideIndex === 2 && (
+                        <Box sx={{ position: 'absolute', left: '15%', display :'flex', justifyContent: 'center' }}>
+                            <img
+                                src={Slide}
+                                alt='Picture'
+                                style={{ height: activeSlideIndex === 2 ? '70%' : '30%', width: activeSlideIndex === 2 ? '70%' : '30%', visibility: !showSlider && 'hidden' }}
+                                className={`slide-image ${showSlider ? 'visible' : ''}`}
+                            />
+                        </Box>
+                    )}
+
+                    <Typography className={`slide-text ${showSlider ? 'visible' : ''}`} sx={{ visibility: !showSlider && 'hidden' }}>
                         {slides[activeSlideIndex]?.content}
                         <span className='dot-color'>.</span>
                     </Typography>
