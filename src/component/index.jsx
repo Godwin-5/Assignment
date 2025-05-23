@@ -22,8 +22,13 @@ import RedBGOverlay2 from '../assets/summary/red square 3.png'
 import IndustrySlides from './industryslides';
 import Eclipse from "../assets/Eclipse.png"
 import RedEclipse from "../assets/red eclipse.png"
+import arrow from '../assets/arrow-right.png'
 import { useEffect, useState } from 'react';
 import Footer from './footer';
+import Blog1 from '../assets/blogpics/Blog pic1.svg'
+import Blog2 from '../assets/blogpics/Blog pic2.svg'
+import Blog3 from '../assets/blogpics/Blog pic3.svg'
+import Blog4 from '../assets/blogpics/Blog pic4.svg'
 
 const Home = () => {
 
@@ -47,8 +52,40 @@ const Home = () => {
     ]
 
     const [activeSlideIndex, setActiveSlideIndex] = useState(0)
-    const [showSlider, setShowSlider] = useState(true)
-    const [showSliderText, setShowSliderText] = useState(true)
+    const [showSlider, setShowSlider] = useState(false)
+    const [showSliderText, setShowSliderText] = useState(false)
+
+    useEffect(() => {
+        let imageTimer, textTimer, imageHideTimer, textHideTimer, nextSlideTimer;
+
+        imageTimer = setTimeout(() => {
+            setShowSlider(true);
+        }, 1000);
+
+        textTimer = setTimeout(() => {
+            setShowSliderText(true);
+        }, 2000);
+
+        imageHideTimer = setTimeout(() => {
+            setShowSlider(false);
+        }, 3000);
+
+        textHideTimer = setTimeout(() => {
+            setShowSliderText(false);
+        }, 3700);
+
+        nextSlideTimer = setTimeout(() => {
+            setActiveSlideIndex((prev) => (prev + 1) % slides.length);
+        }, 3700);
+
+        return () => {
+            clearTimeout(imageTimer);
+            clearTimeout(textTimer);
+            clearTimeout(imageHideTimer);
+            clearTimeout(textHideTimer);
+            clearTimeout(nextSlideTimer);
+        };
+    }, [activeSlideIndex, slides.length]);
 
     const cardDatas = [
         {
@@ -56,7 +93,6 @@ const Home = () => {
             title: 'Audience',
             desc: 'Tap into a wide panel of respondents for any of your market research needs.'
         },
-
         {
             icon: <QualitativeIcon />,
             title: 'Qualitative Research.',
@@ -74,6 +110,25 @@ const Home = () => {
         },
     ]
 
+    const blogDatas = [
+        {
+            label: 'Gain feedback at every phase of product and ad development, from concept to execution with agile testing.',
+            image: Blog1
+        },
+        {
+            label: 'Reach your heights step by step by starting then with the schedule and planning and finally get recognized',
+            image: Blog2
+        },
+        {
+            label: 'Share it with the other people or your group circle to get new ideas and acheiving success earliest',
+            image: Blog3
+        },
+        {
+            label: 'Plan together, work together and succeed together with the teammates',
+            image: Blog4
+        },
+    ]
+
     return (
         <Box>
             {/* container 1 */}
@@ -88,9 +143,10 @@ const Home = () => {
                         src={slides[activeSlideIndex]?.image}
                         alt='Picture'
                         style={{ height: activeSlideIndex === 2 ? '23%' : '30%', width: activeSlideIndex === 2 ? '23%' : '30%', visibility: !showSlider && 'hidden' }}
+                        className={`slide-image ${showSlider ? 'visible' : ''}`}
                     />
 
-                    <Typography className='slide-text' sx={{ visibility: !showSliderText && 'hidden' }}>
+                    <Typography className={`slide-text ${showSliderText ? 'visible' : ''}`} sx={{ visibility: !showSliderText && 'hidden' }}>
                         {slides[activeSlideIndex]?.content}
                         <span className='dot-color'>.</span>
                     </Typography>
@@ -194,8 +250,26 @@ const Home = () => {
                 <IndustrySlides />
             </Grid>
 
-            {/* container 6 */}
-            <Grid container className='container-6' spacing={2}>
+            <Grid container className='container-6' rowGap={2}>
+                <Grid size={{ xs: 12, md: 12 }} className='blog-title'>Fresh Ideas to Help You Reach New Heights.</Grid>
+                {blogDatas?.map((item) => (
+                    <>
+                        <Grid size={{ xs: 12, md: 3 }}>
+                            <img src={item?.image} alt='blog pic' className='blog-image' />
+                            <Box className='blog-bottom-box'>
+                                <Typography className='blog-text'>Blog</Typography>
+                                <Typography className='box-label'>{item?.label}</Typography>
+                                <Box className='arrow-container2'>
+                                    <img src={arrow} />
+                                </Box>
+                            </Box>
+                        </Grid>
+                    </>
+                ))}
+            </Grid>
+
+            {/* container 7 */}
+            <Grid container className='container-7' spacing={2}>
                 <Footer />
             </Grid>
         </Box>
